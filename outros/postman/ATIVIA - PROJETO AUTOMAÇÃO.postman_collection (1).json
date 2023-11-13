@@ -1,0 +1,860 @@
+{
+	"info": {
+		"_postman_id": "84522ed6-27ec-4aea-bab1-4e19b7d8640c",
+		"name": "ATIVIA - PROJETO AUTOMAÇÃO",
+		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+		"_exporter_id": "3321844",
+		"_collection_link": "https://appscs.postman.co/workspace/TangramWorkSpace~4749fed6-567a-4907-8534-48283b03bfee/collection/9352185-84522ed6-27ec-4aea-bab1-4e19b7d8640c?action=share&source=collection_link&creator=3321844"
+	},
+	"item": [
+		{
+			"name": "Envio fortics",
+			"item": [
+				{
+					"name": "Autenticação",
+					"item": [
+						{
+							"name": "Token",
+							"request": {
+								"method": "POST",
+								"header": [],
+								"body": {
+									"mode": "raw",
+									"raw": "{\r\n    \"email\":\"admin@ativiasaude.com.br\",\r\n    \"password\":\"135Mudar@\"\r\n}",
+									"options": {
+										"raw": {
+											"language": "json"
+										}
+									}
+								},
+								"url": {
+									"raw": "https://ativiasaude.sz.chat/api/v4/auth/login",
+									"protocol": "https",
+									"host": [
+										"ativiasaude",
+										"sz",
+										"chat"
+									],
+									"path": [
+										"api",
+										"v4",
+										"auth",
+										"login"
+									],
+									"query": [
+										{
+											"key": "email",
+											"value": "admin@ativiasaude.com.br",
+											"disabled": true
+										},
+										{
+											"key": "password",
+											"value": "135Mudar#",
+											"disabled": true
+										}
+									]
+								}
+							},
+							"response": []
+						}
+					]
+				},
+				{
+					"name": "New Request",
+					"protocolProfileBehavior": {
+						"disableBodyPruning": true
+					},
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": [
+								{
+									"key": "token",
+									"value": "eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJpc3MiOiJodHRwczovL2F0aXZpYXNhdWRlLnN6LmNoYXQvYXBpL3Y0L2F1dGgvbG9naW4iLCJpYXQiOjE2OTg2NzMwMzEsImV4cCI6MTY5ODcwMTgzMSwibmJmIjoxNjk4NjczMDMxLCJqdGkiOiIwenBPR1EwU1Q0dGlnck1SIiwic3ViIjoiNjQ4Y2FiYjcyZTRkNmYwMDE5ZGQ5ZDc3IiwicHJ2IjoiY2QxY2MwZGY2MzQ4MTk1YzBiYmU3NTcxYjY3MDJiNjQzY2IyODNkMyIsImlkIjoiNjQ4Y2FiYjcyZTRkNmYwMDE5ZGQ5ZDc3IiwidHlwZSI6ImFkbWluIiwiZW1haWwiOiJhZG1pbkBhdGl2aWFzYXVkZS5jb20uYnIifQ.PgWn8fkU3Ea4F3zzrDWrKE7wJ_xOMirQTB63vSgSEZA",
+									"type": "string"
+								}
+							]
+						},
+						"method": "GET",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"platform_id\": \"5512981436441\",\r\n    \"channel_id\": \"1239543954\",\r\n    \"type\": \"text\",\r\n    \"contact_name\": \"string\",\r\n    \"message\": \"string\",\r\n    \"file\": \"file\",\r\n    \"legend\": \"string\",\r\n    \"is_hsm\": \"boolean\",\r\n    \"hsm_template_name\": \"string\",\r\n    \"hsm_placeholders\": \"array\",\r\n    \"subject\": \"string\"\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "https://ativiasaude.sz.chat/message/send",
+							"protocol": "https",
+							"host": [
+								"ativiasaude",
+								"sz",
+								"chat"
+							],
+							"path": [
+								"message",
+								"send"
+							]
+						}
+					},
+					"response": []
+				}
+			]
+		},
+		{
+			"name": "Consulta Cadastro",
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "http://wsw.ativia.com.br:3335/autenticacao/pf/0010001126542000",
+					"protocol": "http",
+					"host": [
+						"wsw",
+						"ativia",
+						"com",
+						"br"
+					],
+					"port": "3335",
+					"path": [
+						"autenticacao",
+						"pf",
+						"0010001126542000"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Consulta Boleto",
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "http://wsw.ativia.com.br:3335/boletos/pf/0010001126542000",
+					"protocol": "http",
+					"host": [
+						"wsw",
+						"ativia",
+						"com",
+						"br"
+					],
+					"port": "3335",
+					"path": [
+						"boletos",
+						"pf",
+						"0010001126542000"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "ConsultaAutenticaCpfPagador",
+			"request": {
+				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\r\n\"cpf\": \"34309100805\"\r\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "http://wsw.ativia.com.br:3335/autenticacao/pf",
+					"protocol": "http",
+					"host": [
+						"wsw",
+						"ativia",
+						"com",
+						"br"
+					],
+					"port": "3335",
+					"path": [
+						"autenticacao",
+						"pf"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "ConsultaValidaBeneficario-Cpf_pagador+dt_nascimento pagador",
+			"request": {
+				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\r\n\"cpf\": \"47497922840\",\r\n\"data\": \"27/01/1996\"\r\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "http://wsw.ativia.com.br:3335/validaBen_Pf",
+					"protocol": "http",
+					"host": [
+						"wsw",
+						"ativia",
+						"com",
+						"br"
+					],
+					"port": "3335",
+					"path": [
+						"validaBen_Pf"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "ConsultaBoletosCpfPagador",
+			"request": {
+				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\r\n\"cpf\": \"34309100805\"\r\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "http://wsw.ativia.com.br:3335/boletos/pf/",
+					"protocol": "http",
+					"host": [
+						"wsw",
+						"ativia",
+						"com",
+						"br"
+					],
+					"port": "3335",
+					"path": [
+						"boletos",
+						"pf",
+						""
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "ConsultaBoletosCpfPagador Copy",
+			"request": {
+				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\r\n\"cpf\": \"34309100805\"\r\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "http://wsw.ativia.com.br:3335/boletos/pf/",
+					"protocol": "http",
+					"host": [
+						"wsw",
+						"ativia",
+						"com",
+						"br"
+					],
+					"port": "3335",
+					"path": [
+						"boletos",
+						"pf",
+						""
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "ConsultaAutenticaPJ-CNPJ",
+			"request": {
+				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\r\n\"cnpj\": \"43983235000153\"\r\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "http://wsw.ativia.com.br:3335/autenticacao/pj",
+					"protocol": "http",
+					"host": [
+						"wsw",
+						"ativia",
+						"com",
+						"br"
+					],
+					"port": "3335",
+					"path": [
+						"autenticacao",
+						"pj"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "ConsultaValidaCNPJ+CodigoContrato",
+			"request": {
+				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\r\n\"cnpj\": \"37886605000131\",\r\n\"contrato\": \"5789\"\r\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "http://wsw.ativia.com.br:3335/validaBen_Pj",
+					"protocol": "http",
+					"host": [
+						"wsw",
+						"ativia",
+						"com",
+						"br"
+					],
+					"port": "3335",
+					"path": [
+						"validaBen_Pj"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "ConsultaBoletosCNPJ",
+			"request": {
+				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\r\n\"cnpj\": \"96649587000133\"\r\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "http://wsw.ativia.com.br:3335/boletos/pj/",
+					"protocol": "http",
+					"host": [
+						"wsw",
+						"ativia",
+						"com",
+						"br"
+					],
+					"port": "3335",
+					"path": [
+						"boletos",
+						"pj",
+						""
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "ConsultaAutenticaCpfPagador Copy",
+			"request": {
+				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\r\n\"cpf\": \"14469449806\"\r\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "http://wsw.ativia.com.br:3335/autenticacao/pf",
+					"protocol": "http",
+					"host": [
+						"wsw",
+						"ativia",
+						"com",
+						"br"
+					],
+					"port": "3335",
+					"path": [
+						"autenticacao",
+						"pf"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "ConsultaBoletosCpfPagador Copy",
+			"request": {
+				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\r\n\"cpf\": \"14469449806\"\r\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "http://wsw.ativia.com.br:3335/boletos/pf/",
+					"protocol": "http",
+					"host": [
+						"wsw",
+						"ativia",
+						"com",
+						"br"
+					],
+					"port": "3335",
+					"path": [
+						"boletos",
+						"pf",
+						""
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "ConsultaBoletosCpfPagador GET",
+			"request": {
+				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\r\n\"cpf\": \"14469449806\"\r\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "http://wsw.ativia.com.br:3335/boletos/pf/",
+					"protocol": "http",
+					"host": [
+						"wsw",
+						"ativia",
+						"com",
+						"br"
+					],
+					"port": "3335",
+					"path": [
+						"boletos",
+						"pf",
+						""
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "ConsultaBoletosCpfPagador GET Copy",
+			"request": {
+				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\r\n\"cpf\": \"14469449806\"\r\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "http://wsw.ativia.com.br:3335/boletos/pf/",
+					"protocol": "http",
+					"host": [
+						"wsw",
+						"ativia",
+						"com",
+						"br"
+					],
+					"port": "3335",
+					"path": [
+						"boletos",
+						"pf",
+						""
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "https://ativiasaude.sz.chat/auth/login",
+			"protocolProfileBehavior": {
+				"disableBodyPruning": true
+			},
+			"request": {
+				"method": "GET",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\r\n    \"email\": \"operador@ativia.com.br\",\r\n    \"password\": \"135Mudar#\",\r\n    \"device_token\": \"01e5421a39448fafafc41b6075fcb558\"\r\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "https://ativiasaude.sz.chat/auth/login",
+					"protocol": "https",
+					"host": [
+						"ativiasaude",
+						"sz",
+						"chat"
+					],
+					"path": [
+						"auth",
+						"login"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Autenticação",
+			"request": {
+				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\n    \"email\": \"operador@ativia.com.br\",\n    \"password\": \"135Mudar#\"\n}\n    ",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "https://ativiasaude.sz.chat/api/v4/auth/login",
+					"protocol": "https",
+					"host": [
+						"ativiasaude",
+						"sz",
+						"chat"
+					],
+					"path": [
+						"api",
+						"v4",
+						"auth",
+						"login"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "send",
+			"request": {
+				"auth": {
+					"type": "bearer",
+					"bearer": [
+						{
+							"key": "token",
+							"value": "eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJpc3MiOiJodHRwczovL2F0aXZpYXNhdWRlLnN6LmNoYXQvYXBpL3Y0L2F1dGgvbG9naW4iLCJpYXQiOjE2OTkzOTY1MTMsImV4cCI6MTY5OTQyNTMxMywibmJmIjoxNjk5Mzk2NTEzLCJqdGkiOiJXRW01S045azlPalJLRU5SIiwic3ViIjoiNjRhMTk2YzkwMGI0YTA1NzMzMTdkMDNmIiwicHJ2IjoiY2QxY2MwZGY2MzQ4MTk1YzBiYmU3NTcxYjY3MDJiNjQzY2IyODNkMyIsImlkIjoiNjRhMTk2YzkwMGI0YTA1NzMzMTdkMDNmIiwidHlwZSI6ImFnZW50IiwiZW1haWwiOiJvcGVyYWRvckBhdGl2aWEuY29tLmJyIn0.uGG5XYXiW3zgouyzOrBB01iYv58H-QorEXVOqrp8s6w",
+							"type": "string"
+						}
+					]
+				},
+				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\n    \"platform_id\": \"5511976160503\",\n    \"channel_id\": \"649f48d8cde536001787f72c\",\n    \"type\": \"text\",\n    \"contact_name\": \"Gilson oliveira\",\n    \"message\": \"teste via postman 07/11/2023 19:36\",\n    \"close_session\": \"0\"\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "https://ativiasaude.sz.chat/api/v4/message/send",
+					"protocol": "https",
+					"host": [
+						"ativiasaude",
+						"sz",
+						"chat"
+					],
+					"path": [
+						"api",
+						"v4",
+						"message",
+						"send"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "send Copy",
+			"request": {
+				"auth": {
+					"type": "bearer",
+					"bearer": [
+						{
+							"key": "token",
+							"value": "eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJpc3MiOiJodHRwczovL2F0aXZpYXNhdWRlLnN6LmNoYXQvYXBpL3Y0L2F1dGgvbG9naW4iLCJpYXQiOjE2OTkzNTc3MzAsImV4cCI6MTY5OTM4NjUzMCwibmJmIjoxNjk5MzU3NzMwLCJqdGkiOiJYT3ZZOUpYdmMzTHB1S1EwIiwic3ViIjoiNjQ5NThhYjdmZjBkOTYwNGU3NzliYzIyIiwicHJ2IjoiY2QxY2MwZGY2MzQ4MTk1YzBiYmU3NTcxYjY3MDJiNjQzY2IyODNkMyIsImlkIjoiNjQ5NThhYjdmZjBkOTYwNGU3NzliYzIyIiwidHlwZSI6ImFnZW50IiwiZW1haWwiOiJ0aGFsaXRhLmF1dG9yaXphY29lc0BhdGl2aWEuY29tLmJyIn0.Ux5c968i8_Im61tg6eKTHmObQCHDnGJ5OPxPJ6atr1A",
+							"type": "string"
+						}
+					]
+				},
+				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\n    \"platform_id\": \"5512981436441\",\n    \"channel_id\": \"649f48d8cde536001787f72c\",\n    \"type\": \"media\",\n    \"contact_name\": \"Gilson oliveira\",\n    \"message\": \"tete via postman 06/11/2023 22:52\",\n    \"close_session\": \"1\",\n    \"file\": \"\",\n    \"legend\": \"bolet vcto 16/11/2023\"\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "https://ativiasaude.sz.chat/api/v4/message/send",
+					"protocol": "https",
+					"host": [
+						"ativiasaude",
+						"sz",
+						"chat"
+					],
+					"path": [
+						"api",
+						"v4",
+						"message",
+						"send"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Envio  template - Sem anexo",
+			"request": {
+				"auth": {
+					"type": "bearer",
+					"bearer": [
+						{
+							"key": "token",
+							"value": "eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJpc3MiOiJodHRwczovL2F0aXZpYXNhdWRlLnN6LmNoYXQvYXBpL3Y0L2F1dGgvbG9naW4iLCJpYXQiOjE2OTkzNTc3MzAsImV4cCI6MTY5OTM4NjUzMCwibmJmIjoxNjk5MzU3NzMwLCJqdGkiOiJYT3ZZOUpYdmMzTHB1S1EwIiwic3ViIjoiNjQ5NThhYjdmZjBkOTYwNGU3NzliYzIyIiwicHJ2IjoiY2QxY2MwZGY2MzQ4MTk1YzBiYmU3NTcxYjY3MDJiNjQzY2IyODNkMyIsImlkIjoiNjQ5NThhYjdmZjBkOTYwNGU3NzliYzIyIiwidHlwZSI6ImFnZW50IiwiZW1haWwiOiJ0aGFsaXRhLmF1dG9yaXphY29lc0BhdGl2aWEuY29tLmJyIn0.Ux5c968i8_Im61tg6eKTHmObQCHDnGJ5OPxPJ6atr1A",
+							"type": "string"
+						}
+					]
+				},
+				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\n\t\"platform_id\": \"5512981436441\",\n\t\"channel_id\": \"649f48d8cde536001787f72c\",\n\t\"type\": \"text\",\n\t\"contact_name\": \"Vanderson Oliveira\",\n\t\"message\": \"Olá \",\n\t\"legend\": \"string\",\n\t\"is_hsm\": \"1\",\n\t\"hsm_template_name\": \"msg_inicio\",\n\t\"hsm_placeholders\": [   \"Vanderson\",   \"Flávio\"\n]\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "https://ativiasaude.sz.chat/api/v4/message/send",
+					"protocol": "https",
+					"host": [
+						"ativiasaude",
+						"sz",
+						"chat"
+					],
+					"path": [
+						"api",
+						"v4",
+						"message",
+						"send"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Envio  template - Sem anexo Copy",
+			"request": {
+				"auth": {
+					"type": "bearer",
+					"bearer": [
+						{
+							"key": "token",
+							"value": "eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJpc3MiOiJodHRwczovL2F0aXZpYXNhdWRlLnN6LmNoYXQvYXBpL3Y0L2F1dGgvbG9naW4iLCJpYXQiOjE2OTk0NTQ0NjEsImV4cCI6MTY5OTQ4MzI2MSwibmJmIjoxNjk5NDU0NDYxLCJqdGkiOiJlWk1yYXVsZDduaUtEbDF4Iiwic3ViIjoiNjRhMTk2YzkwMGI0YTA1NzMzMTdkMDNmIiwicHJ2IjoiY2QxY2MwZGY2MzQ4MTk1YzBiYmU3NTcxYjY3MDJiNjQzY2IyODNkMyIsImlkIjoiNjRhMTk2YzkwMGI0YTA1NzMzMTdkMDNmIiwidHlwZSI6ImFnZW50IiwiZW1haWwiOiJvcGVyYWRvckBhdGl2aWEuY29tLmJyIn0.VDWhy8GRjN1GZ5zybGZWc5H5eDIHypm56mOeZujHxDc",
+							"type": "string"
+						}
+					]
+				},
+				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\n\t\"platform_id\": \"5512981436441\",\n\t\"channel_id\": \"649f48d8cde536001787f72c\",\n\t\"type\": \"text\",\n\t\"contact_name\": \"Vanderson Oliveira\",\n\t\"message\": \"Olá \",\n\t\"legend\": \"string\",\n\t\"is_hsm\": \"1\",\n\t\"hsm_template_name\": \"finalizado_agendamento\",\n\t\"hsm_placeholders\": [   \"Vanderson\",   \"Flávio\",\"0\",\"0\",\"0\",\"0\",\"0\"\n]\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "https://ativiasaude.sz.chat/api/v4/message/send",
+					"protocol": "https",
+					"host": [
+						"ativiasaude",
+						"sz",
+						"chat"
+					],
+					"path": [
+						"api",
+						"v4",
+						"message",
+						"send"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Envio com template - Com anexo",
+			"request": {
+				"auth": {
+					"type": "bearer",
+					"bearer": [
+						{
+							"key": "token",
+							"value": "eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJpc3MiOiJodHRwczovL2F0aXZpYXNhdWRlLnN6LmNoYXQvYXBpL3Y0L2F1dGgvbG9naW4iLCJpYXQiOjE2OTkzOTY1MTMsImV4cCI6MTY5OTQyNTMxMywibmJmIjoxNjk5Mzk2NTEzLCJqdGkiOiJXRW01S045azlPalJLRU5SIiwic3ViIjoiNjRhMTk2YzkwMGI0YTA1NzMzMTdkMDNmIiwicHJ2IjoiY2QxY2MwZGY2MzQ4MTk1YzBiYmU3NTcxYjY3MDJiNjQzY2IyODNkMyIsImlkIjoiNjRhMTk2YzkwMGI0YTA1NzMzMTdkMDNmIiwidHlwZSI6ImFnZW50IiwiZW1haWwiOiJvcGVyYWRvckBhdGl2aWEuY29tLmJyIn0.uGG5XYXiW3zgouyzOrBB01iYv58H-QorEXVOqrp8s6w",
+							"type": "string"
+						}
+					]
+				},
+				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\n\t\"platform_id\": \"5512981436441\",\n\t\"channel_id\": \"649f48d8cde536001787f72c\",\n\t\"type\": \"text\",\n\t\"contact_name\": \"Vanderson Oliveira\",\n\t\"message\": \"Olá \",\n\t\"legend\": \"string\",\n\t\"is_hsm\": \"1\",\n\t\"hsm_template_name\": \"msg_inicio\",\n\t\"hsm_placeholders\": [   \"Vanderson\",   \"Flávio\"\n]\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "https://ativiasaude.sz.chat/api/v4/message/send",
+					"protocol": "https",
+					"host": [
+						"ativiasaude",
+						"sz",
+						"chat"
+					],
+					"path": [
+						"api",
+						"v4",
+						"message",
+						"send"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Enviar anexo p teste ok gil",
+			"request": {
+				"auth": {
+					"type": "bearer",
+					"bearer": [
+						{
+							"key": "token",
+							"value": "eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJpc3MiOiJodHRwczovL2F0aXZpYXNhdWRlLnN6LmNoYXQvYXBpL3Y0L2F1dGgvbG9naW4iLCJpYXQiOjE2OTkzOTY1MTMsImV4cCI6MTY5OTQyNTMxMywibmJmIjoxNjk5Mzk2NTEzLCJqdGkiOiJXRW01S045azlPalJLRU5SIiwic3ViIjoiNjRhMTk2YzkwMGI0YTA1NzMzMTdkMDNmIiwicHJ2IjoiY2QxY2MwZGY2MzQ4MTk1YzBiYmU3NTcxYjY3MDJiNjQzY2IyODNkMyIsImlkIjoiNjRhMTk2YzkwMGI0YTA1NzMzMTdkMDNmIiwidHlwZSI6ImFnZW50IiwiZW1haWwiOiJvcGVyYWRvckBhdGl2aWEuY29tLmJyIn0.uGG5XYXiW3zgouyzOrBB01iYv58H-QorEXVOqrp8s6w",
+							"type": "string"
+						}
+					]
+				},
+				"method": "POST",
+				"header": [
+					{
+						"key": "authorization",
+						"value": "eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJpc3MiOiJodHRwczovL2F0aXZpYXNhdWRlLnN6LmNoYXQvYXBpL3Y0L2F1dGgvbG9naW4iLCJpYXQiOjE2OTkzNTc3MzAsImV4cCI6MTY5OTM4NjUzMCwibmJmIjoxNjk5MzU3NzMwLCJqdGkiOiJYT3ZZOUpYdmMzTHB1S1EwIiwic3ViIjoiNjQ5NThhYjdmZjBkOTYwNGU3NzliYzIyIiwicHJ2IjoiY2QxY2MwZGY2MzQ4MTk1YzBiYmU3NTcxYjY3MDJiNjQzY2IyODNkMyIsImlkIjoiNjQ5NThhYjdmZjBkOTYwNGU3NzliYzIyIiwidHlwZSI6ImFnZW50IiwiZW1haWwiOiJ0aGFsaXRhLmF1dG9yaXphY29lc0BhdGl2aWEuY29tLmJyIn0.Ux5c968i8_Im61tg6eKTHmObQCHDnGJ5OPxPJ6atr1A"
+					}
+				],
+				"body": {
+					"mode": "formdata",
+					"formdata": [
+						{
+							"key": "platform_id",
+							"value": "5511976160503",
+							"type": "text"
+						},
+						{
+							"key": "channel_id",
+							"value": "649f48d8cde536001787f72c",
+							"type": "text"
+						},
+						{
+							"key": "type",
+							"value": "media",
+							"type": "text"
+						},
+						{
+							"key": "file",
+							"type": "file",
+							"src": "kQ_FPYj6a/0010001111053008_4-10-2023.pdf"
+						},
+						{
+							"key": "token",
+							"value": "01e5421a39448fafafc41b6075fcb558",
+							"type": "text"
+						},
+						{
+							"key": "close_session",
+							"value": "1",
+							"type": "text"
+						}
+					]
+				},
+				"url": {
+					"raw": "https://ativiasaude.sz.chat/api/v4/message/send",
+					"protocol": "https",
+					"host": [
+						"ativiasaude",
+						"sz",
+						"chat"
+					],
+					"path": [
+						"api",
+						"v4",
+						"message",
+						"send"
+					]
+				}
+			},
+			"response": []
+		}
+	]
+}

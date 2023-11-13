@@ -1,12 +1,18 @@
-//IMPORTA EXPRESS
+//IMPORTACOES
 const express = require('express');
+const router = express.Router();
 
-//IMPORTA AS ROTAS DO EXPRESS
-const routes = express.Router();
+//ROTA COM PARAMETRO
+router.get('/users/:id', (req, res) => {
+  const userId = req.params.id;
+  res.send(`Visualizando perfil do usuário ${userId}`);
+});
 
-//ROTA (AQUI CRIA AS ROTAS PERSONALIZADAS)
-routes.get('/boletos/pf/:matricula', PdfController.boletoPF);
-routes.post('/boletos/pf', PdfController.boletoPFPost);
+//ROTA COM FORMULARIO
+router.post('/submit', (req, res) => {
+  const formData = req.body;
+  res.send('Dados do formulário recebidos com sucesso!');
+});
 
-//EXPORTA PARA SER UTILIZADOS EM OUTROS ARQUIVOS
-module.exports = routes;
+//EXPORTS 
+module.exports = router;

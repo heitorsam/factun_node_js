@@ -1,33 +1,35 @@
-//IMPORTA EXPRESS
+//IMPORTACOES
 const express = require('express');
-const app =  express();
-
-//IMPORTA FILE SISTEM
 const fs = require('fs');
-var logFile = fs.createWriteStream('log.txt', { flags: 'a' });
-try{
+const bodyParser = require('body-parser');
+const app = express();
 
-  //IMPORTA ROTAS
-  const routes = require ('./routes');
+//CRIA ARQUIVO DE LOG
+const logFile = fs.createWriteStream('log.txt', { flags: 'a' });
 
-  //LIBERA ACESSO A COLETAR INFORMACOES DE FORMULARIO HTML
-  var bodyParser = require('body-parser');
-  app.use(bodyParser.urlencoded({
-      extended: true
-    })
-  );
-    
-  //CONFIGURA FUNCIONALIDADES DO APP EXPRESS
-  app.use(bodyParser.json());
-  app.use(express.json());
-  app.use(routes);
+// MIDDLEWARE FORMULARIO HTML
+app.use(bodyParser.urlencoded({ extended: true }));
+app.use(bodyParser.json());
 
-  //PORTA
-  app.listen(8099);
+//IMPORTA ROTAS
+const routes = require('./routes');
+app.use('/', routes);
 
-}catch(err){
+//ROTA PADRAO
+app.get('/', (req, res) => {
+  res.send('Bem-vindo à página inicial!');
+});
 
-  //CRIA ARQUIVO DE LOG COM ERRO
-  logFile.write(err);
+//ROTA ERRO 404
+app.use((req, res) => {
+  res.status(404).send('Página não encontrada');
+});
 
-}
+//INICIA SERVIDOR NA PORTA 8099
+const PORT = 8099;
+app.listen(PORT, () => {
+  console.log('Iniciado server na porta: ${PORT}');
+});
+
+//EXPORTS
+module.exports = app;

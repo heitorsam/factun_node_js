@@ -1,0 +1,13 @@
+ReferenceError: app is not definedReferenceError: app is not definedError: Cannot find module './src'
+Require stack:
+- C:\xampp\htdocs\factun_node_js\src\routes.js
+- C:\xampp\htdocs\factun_node_js\src\server.jsError: Cannot find module 'server'
+Require stack:
+- C:\xampp\htdocs\factun_node_js\src\routes.js
+- C:\xampp\htdocs\factun_node_js\src\server.jsTypeError: app.get is not a functionError: Cannot find module './src/server'
+Require stack:
+- C:\xampp\htdocs\factun_node_js\src\routes.js
+- C:\xampp\htdocs\factun_node_js\src\server.jsError: Cannot find module 'server'
+Require stack:
+- C:\xampp\htdocs\factun_node_js\src\routes.js
+- C:\xampp\htdocs\factun_node_js\src\server.jsTypeError: app.get is not a function

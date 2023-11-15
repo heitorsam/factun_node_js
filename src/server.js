@@ -1,15 +1,19 @@
 //IMPORTACOES
 const express = require('express');
-const fs = require('fs');
-const bodyParser = require('body-parser');
 const app = express();
 
-//CRIA ARQUIVO DE LOG
+//ARQUIVOS
+const fs = require('fs');
 const logFile = fs.createWriteStream('log.txt', { flags: 'a' });
 
+//CROSS PLATAFORMAS
+const cors = require('cors');
+app.use(cors()); 
+
 // MIDDLEWARE FORMULARIO HTML
+const bodyParser = require('body-parser');
 app.use(bodyParser.urlencoded({ extended: true }));
-app.use(bodyParser.json());
+//app.use(bodyParser.json());
 
 //IMPORTA ROTAS
 const routes = require('./routes');
@@ -28,7 +32,7 @@ app.use((req, res) => {
 //INICIA SERVIDOR NA PORTA 8099
 const PORT = 8099;
 app.listen(PORT, () => {
-  console.log('Iniciado server na porta: ${PORT}');
+  console.log('Iniciado server na porta: ' + PORT);
 });
 
 //EXPORTS

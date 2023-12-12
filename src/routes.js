@@ -1,50 +1,48 @@
-//IMPORTACOES
+// IMPORTAÇÕES
 const express = require('express');
 const router = express.Router();
+const sql = require('mssql');
 
-//IMPORTACAO MYSQL2 QUE ACEITA PROMISES
-const mysql = require('mysql2/promise'); 
+// IMPORTAÇÃO DB SQL SERVER
+const dbSqlServer = require('./dbSqlServer');
 
-//IMPORTACAO DB MYSQL
-const dbMysql = require('./dbMysql');
-
-//CRIANDO ASYNC MIDDLEWARE
+// CRIANDO ASYNC MIDDLEWARE
 const asyncMiddleware = fn => (req, res, next) => {
   Promise.resolve(fn(req, res, next)).catch(next);
 };
 
-//RECEBENDO DADOS DO FORMULARIO CONTATO FACTUN
+// RECEBENDO DADOS DO FORMULÁRIO CONTATO FACTUN
 router.post('/api/formcontato', asyncMiddleware(async (req, res) => {
-
   const dadosform = req.body;
   console.log('Dados recebidos:', dadosform);
 
-  //CONECTA AO BANCO
-  const connection = await mysql.createConnection(dbMysql);
+  // CONECTA AO BANCO
+  await sql.connect(dbSqlServer);
 
-  //INSERINDO DADOS NO MYSQL
+  // INSERINDO DADOS USANDO STORED PROCEDURE
   try {
-
-    const result = await connection.execute(
-      'INSERT INTO FALE_CONOSCO (NOME, TELEFONE, EMAIL, ID_ASSUNTO, MENSAGEM) VALUES (?, ?, ?, ?, ?)',
-      [dadosform.nome, dadosform.telefone, dadosform.email, dadosform.id_assunto, dadosform.mensagem]
-    );
+    const result = await sql.query`
+      EXEC USP_FAC_GRAVA_FALECONOSCO
+        @S08_DsNome = ${dadosform.nome},
+        @S08_DsEmail = ${dadosform.email},
+        @S08_DsAssunto = ${dadosform.id_assunto},
+        @S08_DsMsg = ${dadosform.mensagem},
+        @Num_Telefone = ${dadosform.telefone}
+    `;
 
     console.log('Inserido com sucesso:', result);
     res.json({ status: 'success', mensagem: 'Dados inseridos com sucesso!' });
 
   } catch (error) {
-
-    //EM CASO DE ERRO
+    // EM CASO DE ERRO
     console.error('Erro ao inserir no banco de dados:', error);
     res.status(500).json({ status: 'error', mensagem: 'Erro ao inserir no banco de dados.' });
 
+  } finally {
+    // DESCONECTA DO BANCO
+    await sql.close();
   }
-
-   //DESCONECTA DO BANCO
-   connection.end();
-
 }));
 
-//EXPORTS 
+// EXPORTS 
 module.exports = router;

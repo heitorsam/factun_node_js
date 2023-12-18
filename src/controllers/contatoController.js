@@ -4,7 +4,7 @@ const dbSqlServer = require('../config/dbSqlServer');
 
 module.exports = {
 
-    // RECEBENDO DADOS DO FORMULÁRIO CONTATO FACTUN
+    // ENVIANDO DADOS DO FORMULÁRIO CONTATO FACTUN
     async enviaContato(req, res) {
     const dadosform = req.body;
     console.log('Dados recebidos:', dadosform);
@@ -36,6 +36,41 @@ module.exports = {
       // EM CASO DE ERRO
       console.error('Erro ao inserir no banco de dados:', error);
       res.status(500).json({ status: 'error', mensagem: 'Erro ao inserir no banco de dados.' });
+  
+    } finally {
+      // DESCONECTA DO BANCO
+      await sql.close();
+    }
+  },
+
+   // RECEBENDO DADOS DE ASSUNTO FORMULÁRIO CONTATO FACTUN
+   async recebeAssunto(req, res) {
+
+    // CONECTA AO BANCO
+    try {
+      await sql.connect(dbSqlServer);
+  
+    } catch (error) {
+      console.error('Erro ao conectar no banco de dados:', error);
+      res.status(500).json({ status: 'error', mensagem: 'Erro ao conectar no banco de dados.'});
+    }
+  
+    // INSERINDO DADOS USANDO STORED PROCEDURE
+    try {
+      
+      // EXECUTA A PROCEDURE DE ASSUNTO
+      const result = await sql.query`EXEC [dbo].[USP_FAC_COMBO_FALECON_ASSUNTO]`;
+
+      // ENVIA OS DADOS ENCONTRADOS COMO RESPSOTA
+      res.json(result.recordset);
+      //res.json({ status: 'success', mensagem: 'Dados recebidos com sucesso!' });
+    
+      console.log('Recebido com sucesso:', result);  
+  
+    } catch (error) {
+      // EM CASO DE ERRO
+      console.error('Erro ao inserir no banco de dados:', error);
+      res.status(500).json({ status: 'error', mensagem: 'Erro ao realizar um select no banco de dados.' });
   
     } finally {
       // DESCONECTA DO BANCO
